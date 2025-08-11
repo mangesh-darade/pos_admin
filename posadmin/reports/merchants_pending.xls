@@ -1,0 +1,68 @@
+ <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>#</th><th>Merchant Name</th><th>Email</th><th>Pos Url</th><th>Business Name</th>
+                  <th>Phone</th>
+                  <th>POS Name</th>
+                  <th>POS Type</th>                  
+                  <th>Version</th>
+                  <th>Package</th>
+                  <th>Status</th>
+                  <th>Due Date</th>
+                  <th>Balance Validity</th>     </tr>
+            </thead>
+            <tbody><tr>
+                        <td>1</td><td>sunil dasoriya</td><td>sunildasoriya439@email.com</td><td></td> <td>s.k online stor</td>
+                        <td>7247261542</td>
+                        <td>s.konlinestor</td>
+                        <td>Grocery / Kirana</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr><tr>
+                        <td>2</td><td>sunil dasoriya</td><td>sunildasoriya439@email.com</td><td></td> <td>s.k online stor</td>
+                        <td>7247251542</td>
+                        <td>s.konlinestor</td>
+                        <td>Sports</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr><tr>
+                        <td>3</td><td>Ayman Ansari </td><td>Aymanansari63181@gmail.com</td><td></td> <td>AA online shopping </td>
+                        <td>7058295268</td>
+                        <td>AAonlineshopping</td>
+                        <td>Other</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr><tr>
+                        <td>4</td><td>Pratik</td><td>Pawarpratik698@gmail.com</td><td></td> <td>Electronic</td>
+                        <td>9082422673</td>
+                        <td>Electronic</td>
+                        <td>Electronics</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr><tr>
+                        <td>5</td><td>Maldini Wines Shop</td><td>grg196313@yahoo.com</td><td></td> <td>Maldini wines Shop</td>
+                        <td>8390978485</td>
+                        <td>MaldiniwinesShop</td>
+                        <td>Other</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr><tr>
+                        <td>6</td><td>demo</td><td>demo@demo.com</td><td></td> <td>demo@demo.com</td>
+                        <td>9876543211</td>
+                        <td></td>
+                        <td>Hardware</td>
+                        <td style="text-align:center;"></td>
+                        <td></td>
+                        <td>pending</td>
+                        <td></td>
+                        <td style="text-align:right;"> days</td> </tr>   </tbody></table>

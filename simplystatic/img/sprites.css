@@ -1,0 +1,265 @@
+.retail,.electronics,.Babcare,.electrical,.homeDecore,.Salon,.Bakery,.service,.Pharmaceutical,.restorent,.Apparel,.security_image3,.SSL,.reporting,.account,
+.customerm,.dashboard-desktop-windows,.inventory,.customerf,.offline,.cloud_,.cardpay,.responsive,.connect,.ecommerce,.order,.pos_2,.mobile,.cloud ,.touch,.pos1{background-image: url(sprites.png);}
+
+
+.Babcare{
+	background-position: -1589px -396px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+
+.electrical{
+	background-position: -503px -189px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+	
+}
+
+.call-center{
+	background-position: -1262px -7px ;
+	width: 338px;
+	height: 507px;
+}
+
+.service{
+	background-position: -1606px -1px ;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+
+.homeDecore{
+	background-position:-285px 390px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+.Pharmaceutical{
+	background-position:-202px -1px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+.Salon{
+	background-position: -554px -400px ;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+
+.ecommerce{
+	background-position: -882px -348px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.Bakery{
+	background-position: -1014px -244px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+
+.Apparel{
+	background-position: -1617px -215px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+	border:1px solid #eef;
+}
+
+.SSL{
+	background-position: -222px -457px ;
+	width: 60px;
+	height: 40px;
+}
+
+.security_image3{
+	background-position: -824px -7px ;
+	width: 297px;
+	height: 224px;
+}
+
+.account{
+	background-position: -758px -399px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.reporting{
+	background-position: -705px -283px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.customerm{
+	background-position: -710px -177px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.dashboard-desktop-windows{
+	background-position: -1130px -112px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.inventory{
+	background-position: -1130px -2px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.customerf{
+	background-position: -443px -497px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.order{
+	background-position: -331px -494px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.offline{
+	background-position: -810px -500px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.ecommerce{
+	background-position: -1029px -498px ;
+	width: 100px;
+	height: 100px;
+}
+
+.connect{
+	background-position: -923px -500px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.responsive{
+	background-position: -1253px -500px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.cardpay{
+	background-position: -1140px -500px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.cloud_{
+	background-position: -1479px -500px ;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 2px solid #738d00;
+}
+
+.mobile{
+	background-position: -1357px -500px ;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #f89406;
+	border-radius: 50%;
+}
+
+.touch{
+	background-position: -219px -500px ;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #f89406;
+	border-radius: 50%;
+}
+
+.cloud{
+	background-position: -112px -463px ;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #f89406;
+	border-radius: 50%;
+}
+
+.pos1{
+	background-position: -5px -462px ;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #f89406;
+	border-radius: 50%;
+}
+
+.pos_2{
+	background-position: 0 -188px ;
+	width: 276px;
+	height: 264px;
+}
+
+.retail{
+	background-position: -612px -2px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+}
+
+.restorent{
+	background-position: -407px -2px ;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+}
+
+
+.electronics{
+	background-position: 0 0;
+	width: 200px;
+	height: 170px;
+	border-radius: 50%;
+	margin-top:60px;
+}

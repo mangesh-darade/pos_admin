@@ -1,0 +1,230 @@
+ <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>#</th><th>Merchant Name</th><th>Email</th><th>Pos Url</th><th>Business Name</th>
+                  <th>Phone</th>
+                  <th>POS Name</th>
+                  <th>POS Type</th>                  
+                  <th>Version</th>
+                  <th>Package</th>
+                  <th>Status</th>
+                  <th>Due Date</th>
+                  <th>Balance Validity</th>     </tr>
+            </thead>
+            <tbody><tr>
+                        <td>1</td><td>Shubham Cafe</td><td></td><td>https://shubhamcafe.simplypos.in/</td> <td>Shubham Cafe</td>
+                        <td>3496877564</td>
+                        <td>shubhamcafe</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-10</td>
+                        <td style="text-align:right;">1 days</td> </tr><tr>
+                        <td>2</td><td>Nirmay Cafe</td><td></td><td>https://nirmaycafe.simplypos.in/</td> <td>Nirmay Café</td>
+                        <td>1110909866</td>
+                        <td>nirmaycafe</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-11</td>
+                        <td style="text-align:right;">2 days</td> </tr><tr>
+                        <td>3</td><td>Utsav Cafe Bhiwadi</td><td></td><td>https://utsavcafejaipur.simplypos.in/</td> <td>Utsav Cafe Jaipur</td>
+                        <td>0009079876</td>
+                        <td>utsavcafejaipur</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-11</td>
+                        <td style="text-align:right;">2 days</td> </tr><tr>
+                        <td>4</td><td>Utsav Cafe Bhiwadi</td><td></td><td>https://utsavcafebhiwadi.simplypos.in/</td> <td>Utsav Cafe-Bhiwadi</td>
+                        <td>0356545454</td>
+                        <td>utsavcafebhiwadi</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-11</td>
+                        <td style="text-align:right;">2 days</td> </tr><tr>
+                        <td>5</td><td>Utsav Cafe Lavasa</td><td></td><td>https://utsavcafelavasa.simplypos.in/</td> <td>Utsav Café-Lavasa</td>
+                        <td>2098979875</td>
+                        <td>utsavcafelavasa</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-11</td>
+                        <td style="text-align:right;">2 days</td> </tr><tr>
+                        <td>6</td><td>Awadhesh Yadav</td><td>avdhesh_ydv19@yahoo.com</td><td>https://cafehouse.simplypos.in/</td> <td>Cafe House</td>
+                        <td>9167243825</td>
+                        <td>cafehouse</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.08</td>
+                        <td>ADVANCED</td>
+                        <td>upgrade</td>
+                        <td>2022-03-14</td>
+                        <td style="text-align:right;">5 days</td> </tr><tr>
+                        <td>7</td><td>Vikrant Chandra</td><td>vikrant@ruchoks.com</td><td>https://brownwall.simplypos.in/</td> <td>Brownwall Food Products Pvt</td>
+                        <td>7718081400</td>
+                        <td>brownwall</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>suspended</td>
+                        <td>2022-03-14</td>
+                        <td style="text-align:right;">5 days</td> </tr><tr>
+                        <td>8</td><td>Rakesh</td><td></td><td>https://sagarashokamargnew.simplypos.in/</td> <td>Sagar Sweet Ashoka Marg</td>
+                        <td>5645676787</td>
+                        <td>sagarashokamargnew</td>
+                        <td>Sweets</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-15</td>
+                        <td style="text-align:right;">6 days</td> </tr><tr>
+                        <td>9</td><td>Mr Rakesh</td><td></td><td>https://sagarsuperadmin.simplypos.in/</td> <td>Sagar Sweets Super Admin</td>
+                        <td>1190897899</td>
+                        <td>sagarsuperadmin</td>
+                        <td>Simplysafe Super Admin</td>
+                        <td style="text-align:center;">1.02</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-15</td>
+                        <td style="text-align:right;">6 days</td> </tr><tr>
+                        <td>10</td><td>Mohnish Dange</td><td>suhas818@gmail.com</td><td>https://agroved.simplypos.in/</td> <td>Organik Bharat Agro Ventures</td>
+                        <td>9699007767</td>
+                        <td>agroved</td>
+                        <td>Grocery Lite</td>
+                        <td style="text-align:center;">4.08</td>
+                        <td>MULTI-OUTLET </td>
+                        <td>upgrade</td>
+                        <td>2022-03-17</td>
+                        <td style="text-align:right;">8 days</td> </tr><tr>
+                        <td>11</td><td>Punchaiyat Hyderabad</td><td></td><td>https://punchaiyathyderabad.simplypos.in/</td> <td>Punchaiyat Hyderabad</td>
+                        <td>1109652576</td>
+                        <td>punchaiyathyderabad</td>
+                        <td>Restaurants</td>
+                        <td style="text-align:center;">4.08</td>
+                        <td>ADVANCED</td>
+                        <td>upgrade</td>
+                        <td>2022-03-17</td>
+                        <td style="text-align:right;">8 days</td> </tr><tr>
+                        <td>12</td><td>Parag Sharma</td><td>pvsharma28@gmail.com</td><td>https://regalsweets.simplypos.in/</td> <td>Regal Sweets</td>
+                        <td>9821055054</td>
+                        <td>regalsweets</td>
+                        <td>Sweets</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-18</td>
+                        <td style="text-align:right;">9 days</td> </tr><tr>
+                        <td>13</td><td>Mr Dipen</td><td></td><td>https://scentidomumbai.simplypos.in/</td> <td>Scentido Mumbai</td>
+                        <td>0907656456</td>
+                        <td>scentidomumbai</td>
+                        <td>Other</td>
+                        <td style="text-align:center;">4.19</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-21</td>
+                        <td style="text-align:right;">12 days</td> </tr><tr>
+                        <td>14</td><td>Abhishek TRADERS</td><td>abhibspr111@gmail.com</td><td>https://abhishektraders.simplypos.in/</td> <td>Abhishek TRADERS</td>
+                        <td>7024406444</td>
+                        <td>abhishektraders</td>
+                        <td>Hardware</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-22</td>
+                        <td style="text-align:right;">13 days</td> </tr><tr>
+                        <td>15</td><td>Shailesh</td><td></td><td>https://shrinandaiartsnew.simplypos.in/</td> <td>Shri Nandai Art</td>
+                        <td>8997786657</td>
+                        <td>shrinandaiartsnew</td>
+                        <td>Grocery Lite</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>created</td>
+                        <td>2022-03-22</td>
+                        <td style="text-align:right;">13 days</td> </tr><tr>
+                        <td>16</td><td>Rakesh Chaudhary</td><td></td><td>https://sagarganganew.simplypos.in/</td> <td>Sagar Sweet gangapur</td>
+                        <td>2089867558</td>
+                        <td>sagarganganew</td>
+                        <td>Sweets</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-23</td>
+                        <td style="text-align:right;">14 days</td> </tr><tr>
+                        <td>17</td><td>Ravindra Atmaram Mathne</td><td>ravimathne74@gmail.com</td><td>https://shreeashtavinayak.simplypos.in/</td> <td>Shree Ashtavinayak bazar peth</td>
+                        <td>9766516888</td>
+                        <td>shreeashtavinayak</td>
+                        <td>Grocery Lite</td>
+                        <td style="text-align:center;">4.11</td>
+                        <td>ADVANCED</td>
+                        <td>upgrade</td>
+                        <td>2022-03-26</td>
+                        <td style="text-align:right;">17 days</td> </tr><tr>
+                        <td>18</td><td>Rakesh Chaudhary</td><td></td><td>https://sagarhonew.simplypos.in/</td> <td>Sagar Sweet Ho</td>
+                        <td>2089867556</td>
+                        <td>sagarhonew</td>
+                        <td>Sweets</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-29</td>
+                        <td style="text-align:right;">20 days</td> </tr><tr>
+                        <td>19</td><td>Rakesh</td><td></td><td>https://sagarcolllegrdnew.simplypos.in/</td> <td>Sagar Sweet Collage Road</td>
+                        <td>0988976765</td>
+                        <td>sagarcolllegrdnew</td>
+                        <td>Sweets</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-30</td>
+                        <td style="text-align:right;">21 days</td> </tr><tr>
+                        <td>20</td><td>Ritesh Bhujade</td><td>bhujaderitesh@gmail.com</td><td>https://wondertoys.simplypos.in/</td> <td>Wonder Toy's</td>
+                        <td>9826283466</td>
+                        <td>wondertoys</td>
+                        <td>Gift and Toy store</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-30</td>
+                        <td style="text-align:right;">21 days</td> </tr><tr>
+                        <td>21</td><td>Mr Dipen</td><td></td><td>https://scentidokolkata.simplypos.in/</td> <td>scentidokolkata</td>
+                        <td>3888888888</td>
+                        <td>scentidokolkata</td>
+                        <td>Other</td>
+                        <td style="text-align:center;">4.20</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-03-30</td>
+                        <td style="text-align:right;">21 days</td> </tr><tr>
+                        <td>22</td><td>Simplysafe Pharma</td><td></td><td>https://devpharma.simplypos.in/</td> <td>Simplysafe Pharmaceutical</td>
+                        <td>1252145214</td>
+                        <td>devpharma</td>
+                        <td>Pharmaceutical</td>
+                        <td style="text-align:center;">4.10</td>
+                        <td>FREE</td>
+                        <td>extended</td>
+                        <td>2022-04-01</td>
+                        <td style="text-align:right;">23 days</td> </tr><tr>
+                        <td>23</td><td>Mr Dipen</td><td></td><td>https://scentidodelhi.simplypos.in/</td> <td>scentidodelhi</td>
+                        <td>0005865479</td>
+                        <td>scentidodelhi</td>
+                        <td>Other</td>
+                        <td style="text-align:center;">4.17</td>
+                        <td>MULTI-OUTLET </td>
+                        <td>upgrade</td>
+                        <td>2022-04-01</td>
+                        <td style="text-align:right;">23 days</td> </tr><tr>
+                        <td>24</td><td>Khalik Khan</td><td>khalilkhan7@gmail.com</td><td>https://uptrendfashion.simplypos.in/</td> <td>Uptrend fashion</td>
+                        <td>9819065486</td>
+                        <td>uptrendfashion</td>
+                        <td>Amstead Clothing</td>
+                        <td style="text-align:center;">2.00</td>
+                        <td>ADVANCED</td>
+                        <td>upgrade</td>
+                        <td>2022-04-02</td>
+                        <td style="text-align:right;">24 days</td> </tr>   </tbody></table>

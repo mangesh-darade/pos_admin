@@ -1,0 +1,23 @@
+[09-Jun-2022 08:51:24 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:52:21 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:52:41 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:52:51 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:53:44 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:54:21 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:55:20 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:56:20 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:57:32 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:57:33 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:57:50 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:58:21 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 08:58:37 UTC] PHP Warning:  mysqli::mysqli(): (08004/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 09:01:41 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 09:06:21 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 09:06:47 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 09:55:25 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 09:59:37 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 10:14:37 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): No such file or directory in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 10:19:25 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): No such file or directory in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 10:19:46 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): No such file or directory in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 10:20:43 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): No such file or directory in /home/sitadmin/public_html/include/database.php on line 11
+[09-Jun-2022 10:26:20 UTC] PHP Warning:  mysqli::mysqli(): (HY000/2002): No such file or directory in /home/sitadmin/public_html/include/database.php on line 11

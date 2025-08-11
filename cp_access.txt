@@ -1,0 +1,1 @@
+{"CP_PREFIX":"sitadmin","CP_USERNAME":"sitadmin","CP_PASSWORD":"wEYs1wEeIfN9MsHe10oSdC0AmrxvCEmaNydOtCkbLaHpdIpY56oBrkclNpf1gbdjzNAr+aW4jqeqaYmAKM7tf2sQS1jol4ZOJK8j/Yh9EnXRsDPqaoaPa7Q4S1aBC/wW|QZ0wQMgvgqqZw/WMK5ZnRPYTnCyUhsT6I5K58m/rAF4="}

@@ -1,0 +1,331 @@
+[17-Jun-2022 16:06:59 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sitadmin/public_html/checkout.php on line 34
+[18-Jun-2022 07:04:24 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[18-Jun-2022 07:04:24 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[18-Jun-2022 07:04:24 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[18-Jun-2022 07:04:24 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[18-Jun-2022 07:04:24 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[20-Jun-2022 09:14:00 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sitadmin/public_html/checkout.php on line 34
+[27-Jun-2022 19:53:44 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[27-Jun-2022 19:53:44 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[27-Jun-2022 19:53:44 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[27-Jun-2022 19:53:45 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[27-Jun-2022 19:53:45 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[27-Jun-2022 23:39:16 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[27-Jun-2022 23:39:16 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[27-Jun-2022 23:39:16 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[27-Jun-2022 23:39:17 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[27-Jun-2022 23:39:17 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[03-Jul-2022 13:52:53 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[03-Jul-2022 13:52:53 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[03-Jul-2022 13:52:53 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[03-Jul-2022 13:52:53 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[03-Jul-2022 13:52:53 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[07-Jul-2022 07:37:40 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[07-Jul-2022 07:37:40 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[07-Jul-2022 07:37:40 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[07-Jul-2022 07:37:40 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[07-Jul-2022 07:37:40 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[15-Jul-2022 23:10:51 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[15-Jul-2022 23:10:51 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[15-Jul-2022 23:10:51 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[15-Jul-2022 23:10:51 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[15-Jul-2022 23:10:51 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[16-Jul-2022 10:50:55 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sitadmin/public_html/checkout.php on line 34
+[29-Jul-2022 08:03:57 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sitadmin/public_html/checkout.php on line 34
+[23-Aug-2022 07:41:50 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[23-Aug-2022 07:41:50 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[23-Aug-2022 07:41:50 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[23-Aug-2022 07:41:50 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[23-Aug-2022 07:41:50 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[30-Aug-2022 21:22:04 UTC] PHP Warning:  require(PHPMailer-master/src/Exception.php): failed to open stream: No such file or directory in /home/sitadmin/public_html/mail.php on line 4
+[30-Aug-2022 21:22:04 UTC] PHP Fatal error:  require(): Failed opening required 'PHPMailer-master/src/Exception.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/sitadmin/public_html/mail.php on line 4
+[12-Sep-2022 23:49:53 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sitadmin/public_html/checkout.php on line 34
+[19-Sep-2022 08:37:00 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[19-Sep-2022 08:37:00 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[19-Sep-2022 08:37:00 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[19-Sep-2022 08:37:01 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[19-Sep-2022 08:37:01 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[26-Sep-2022 15:46:38 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[26-Sep-2022 15:46:38 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[26-Sep-2022 15:46:38 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[26-Sep-2022 15:46:38 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[26-Sep-2022 15:46:38 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[10-Nov-2022 18:41:14 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[10-Nov-2022 18:41:14 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[10-Nov-2022 18:41:14 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[10-Nov-2022 18:41:14 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[10-Nov-2022 18:41:14 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[11-Nov-2022 08:22:48 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[11-Nov-2022 08:22:48 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[11-Nov-2022 08:22:48 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[11-Nov-2022 08:22:48 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[11-Nov-2022 08:22:48 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+
+[12-Nov-2022 09:38:26 Asia/Kolkata] URL: https://127.0.0.1:2083/xml-api/cpanel
+[12-Nov-2022 09:38:26 Asia/Kolkata] DATA: domain=testax&rootdomain=simplypos.in&dir=posmerchants%2Ftestazarray&disallowdot=1&canoff=0&cpanel_xmlapi_user=sitadmin&cpanel_xmlapi_module=SubDomain&cpanel_xmlapi_func=addsubdomain&cpanel_xmlapi_apiversion=2
+[12-Nov-2022 09:38:26 Asia/Kolkata] Authentication Header: Authorization: Basic c2l0YWRtaW46M0NmWnlVVFJtOEww
+
+
+[12-Nov-2022 09:38:26 Asia/Kolkata] RESPONSE:
+ <?xml version="1.0" ?>
+<cpanelresult>
+    <error>Access denied</error>
+    <data>
+        <result>0</result>
+        <reason>Access denied</reason>
+    </data>
+</cpanelresult>
+
+[12-Nov-2022 09:38:26 Asia/Kolkata] SimpleXML var_dump:
+SimpleXMLElement Object
+(
+    [error] => Access denied
+    [data] => SimpleXMLElement Object
+        (
+            [result] => 0
+            [reason] => Access denied
+        )
+
+)
+

@@ -1,0 +1,78 @@
+.btn-icon {        
+    padding-top: 3px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    line-height: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+ 
+.alert-action {
+    display: none;
+    position: relative;
+    top: 100px; 
+    width: 300px;
+    margin:0 auto;
+    text-align: left;
+    z-index: 999;        
+}
+
+
+.text-deleted
+{
+   text-decoration: line-through;
+   color: #a94442; 
+}
+
+
+.row-deactive td {
+    color: #ccc;
+}
+
+.row-deleted td {
+    text-decoration: line-through;
+    color: #a94442;
+} 
+
+.row-deleted td:last-child {
+    text-decoration: none;
+}
+
+
+.has-error {
+    border-color: #a94442;
+    color: #a94442;
+}
+
+.has-success {
+    border-color: #3c763d;
+    color: #3c763d;
+}
+    
+#setupPOS {
+    display: none;
+    width: 400px;
+        
+}
+    
+#setupPOS ul li {
+    padding: 10px;
+    line-height: 40px;
+}
+
+.label {     
+	padding: .2em .4em .3em !important;
+}
+
+.cursor-pointer {
+	cursor:pointer;
+}
+
+.cursor-pointer:hover .fa{
+	font-size: 1.2em;
+}
+
+.cursor-default {
+	cursor:default;
+}

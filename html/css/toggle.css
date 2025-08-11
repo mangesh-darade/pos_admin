@@ -1,0 +1,40 @@
+.accordion_container {
+    width: 100%;
+}
+
+.accordion_head {
+    background-color: #ffffff;
+    color: #f16c3d;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-size: 18px;
+    margin: 0 0 1px 0;
+    padding: 7px 11px;
+    font-weight: bold;
+}
+
+.accordion_body {
+    background: #ffffff;
+}
+
+.accordion_body p {
+    padding: 18px 30px;
+    margin: 0px;
+}
+
+.plusminus {
+    float: right;
+}
+
+.plusminus img {
+    width: 20px;
+    vertical-align: middle;
+	color:red;
+	background-color:#bfd535;
+    padding: 4px;
+    border-radius: 30px;
+}
+
+.hide {
+    display: none;
+}

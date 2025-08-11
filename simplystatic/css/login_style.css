@@ -1,0 +1,135 @@
+
+
+/*==================================================
+signup page
+============================================================*/
+.jumbotron.signup-page{
+	background:rgba(0, 0, 0, 0) url("../img/sign-in-background-indie-home-store.jpg") repeat scroll 0 0 / cover ;
+	margin-bottom:0;
+}
+.external {
+    color: #fff;
+    font-size: 16px;
+}
+.external i {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 0 0 9px;
+}
+.signup-div h6 {
+    color: #fff;
+    margin: 10px 0;
+	font-size:16px;
+}
+.signup-div a {
+    display: block;
+    margin-bottom: 15px;
+	font-size:16px;
+	color:#fff;
+}
+.col-sm-12.col-xs-12.signup-div {
+    background: #404040 none repeat scroll 0 0;
+	padding: 0;
+}
+.signup-div .cv-signin-header-image {
+    display: inline-block;
+    margin-right: 13px;
+    max-width: 116px;
+}
+.signup-div .col-sm-4.col-xs-12 img {
+    margin-bottom: 13px;
+    padding: 0 46px;
+    width: 100%;
+}
+.signup-div .col-sm-4.col-xs-12 > h5 {
+    padding: 29px 0 0;
+}
+.signup-div .col-sm-4.col-xs-12 {
+    padding: 45px 52px 0;
+	float:right;
+}
+.signup-div .col-sm-8.col-xs-12 {
+    background: #fff none repeat scroll 0 0;
+	float:right;
+}
+.signup-div .signin-panel-form-wrapper {
+    padding: 36px 29px;
+}
+.signup-div h1 {
+    color: #404040;
+    display: inline-block;
+    font-size: 35px;
+    font-weight: lighter;
+}
+.form-heading{
+	color: #626262;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    height: 45px;
+    line-height: 1.2;
+    margin-bottom: 0;
+    padding-top: 15px;
+	text-transform:uppercase;
+}
+.form .grey-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 15px 0 0;
+    text-transform: none;
+	color:#626262;
+	float:right;
+}
+.form .form-label--type-reveal {
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.form .form-field {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #d2d2d2;
+    border-radius: 0;
+    color: #404040;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    height: 45px;
+    padding: 5px 9px;
+	width: 100%;
+}
+.form .form-row {
+    clear: both;
+    margin-bottom: 10px;
+}
+.form .form-field:focus {
+    border-color: #08e;
+}
+.submit-button{
+/*	width: 220px;*/
+	font-size: 16px;
+    height: 50px;
+	background-color: #41af4b;
+    color: #fff;
+    transition-duration: 0.2s;
+	padding: 7px 24px;
+	border-radius: 3px;
+	float: right;
+	transition-duration: 0.2s;
+}
+.submit-button:hover{
+	background-color: #3da446;
+}
+.signup-div .forgot-link{
+	font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 15px 0 0;
+	color: #008cc5;
+}
+.mt-15, .mt-xs-15 {
+    margin-top: 15px !important;
+}
+/*new style end here*/
+
