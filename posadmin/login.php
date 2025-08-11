@@ -4,8 +4,7 @@ include_once('application_main.php');
  
 if(isset($_SESSION['session_user_id'])) {
     
-    header('location:index.php');
-    exit;   
+    header('location:index.php');    
 } 
 
 if($_POST['loginAdmin']){
@@ -22,65 +21,30 @@ if($_POST['loginAdmin']){
     }
     if(empty($token) || $token !== $_SESSION['CSP']) {         
         header("location:login.php?act=tokenmissmatch");
-        exit;
     }
     
     if( (!empty($username) && !empty($password)) && (!empty($token) && $token == $_SESSION['CSP']) ){
-        // Secure auth: fetch by username, verify password (supports legacy MD5 and password_hash)
-        $stmt = $conn->prepare("SELECT `user_id`, `username`, `display_name`, `email_id`, `mobile_no`, `last_login`, `is_disrtibuter`, `group`, `is_active`, `password` FROM `admin` WHERE `username` = ? AND `is_delete` = '0' LIMIT 1");
-        if ($stmt) {
-            $stmt->bind_param('s', $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ($result && $result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $passwordOk = false;
-                $needsRehash = false;
+        
+        $encr_password = md5($password);
+            
+        $sql = "SELECT `user_id`, `username`, `display_name`, `email_id`, `mobile_no`, `last_login`, `is_disrtibuter`, `group`, `is_active` "
+                . "FROM `admin` "
+                . "WHERE `username` = '".$username."' AND `password` = '$encr_password' AND `is_delete` = '0'  ";
+    
+        $result = $conn->query($sql);  
+        
+        if($result){
+                
+            $row_cnt = $result->num_rows;
 
-                $stored = isset($row['password']) ? $row['password'] : '';
-                // Detect legacy MD5 (32 hex chars)
-                if (preg_match('/^[a-f0-9]{32}$/i', $stored)) {
-                    if (md5($password) === $stored) {
-                        $passwordOk = true;
-                        // If password_hash available, migrate to stronger hash on login
-                        if (function_exists('password_hash')) {
-                            $newHash = password_hash($password, PASSWORD_BCRYPT);
-                            if ($newHash) {
-                                $rehashStmt = $conn->prepare("UPDATE `admin` SET `password` = ? WHERE `user_id` = ?");
-                                if ($rehashStmt) {
-                                    $rehashStmt->bind_param('si', $newHash, $row['user_id']);
-                                    $rehashStmt->execute();
-                                    $rehashStmt->close();
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    // Modern hash
-                    if (function_exists('password_verify')) {
-                        if (password_verify($password, $stored)) {
-                            $passwordOk = true;
-                            if (function_exists('password_needs_rehash') && password_needs_rehash($stored, PASSWORD_BCRYPT)) {
-                                $newHash = password_hash($password, PASSWORD_BCRYPT);
-                                if ($newHash) {
-                                    $rehashStmt = $conn->prepare("UPDATE `admin` SET `password` = ? WHERE `user_id` = ?");
-                                    if ($rehashStmt) {
-                                        $rehashStmt->bind_param('si', $newHash, $row['user_id']);
-                                        $rehashStmt->execute();
-                                        $rehashStmt->close();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if($row_cnt > 0){
 
-                if ($passwordOk) {
-                    if($row['is_active']==0) {                        
-                        header("location:login.php?act=inactive");
-                        exit; 
-                    }
+                $row = $result->fetch_array(MYSQLI_ASSOC);
 
+                if($row['is_active']==0) {                        
+                    header("location:login.php?act=inactive"); 
+                } else {                    
+                    
                     $success = true;
                     $successMessage = 'Login Successfully.'; 
 
@@ -96,43 +60,21 @@ if($_POST['loginAdmin']){
                     $_SESSION['login']['is_active']         = $row['is_active'];
 
                     $dateTime = date('Y-m-d H:i:s');
-                    $upd = $conn->prepare("UPDATE `admin` SET `last_login` = `current_login`, `current_login`=? WHERE `user_id` = ?");
-                    if ($upd) {
-                        $upd->bind_param('si', $dateTime, $row['user_id']);
-                        $upd->execute();
-                        $upd->close();
-                    }
+                    
+                    $sqlUpdate = "UPDATE `admin` SET `last_login` = `current_login`, `current_login`='$dateTime' WHERE `user_id` = '".$row['user_id']."' ";
+
+                    $result1 = $conn->query($sqlUpdate); 
 
                     header("location:merchants.php");
-                    exit;
-                } else {
-                    header("location:login.php?act=invalid");
-                    exit;
-                }
-            } else {
+                    
+                }//end else.
+
+            } else {              
+
                 header("location:login.php?act=invalid");
-                exit;
-            }
-            $stmt->close();
-        } else {
-            // Fallback to previous behavior if prepare failed (unlikely)
-            $encr_password = md5($password);
-            $sql = "SELECT `user_id`, `username`, `display_name`, `email_id`, `mobile_no`, `last_login`, `is_disrtibuter`, `group`, `is_active` FROM `admin` WHERE `username` = '".$username."' AND `password` = '".$encr_password."' AND `is_delete` = '0'";
-            $result = $conn->query($sql);
-            if ($result && $result->num_rows > 0) {
-                $row = $result->fetch_array(MYSQLI_ASSOC);
-                if($row['is_active']==0) {                        
-                    header("location:login.php?act=inactive");
-                    exit; 
-                }
-                $_SESSION['session_user_id'] = $row['user_id'];
-                header("location:merchants.php");
-                exit;
-            } else {
-                header("location:login.php?act=invalid");
-                exit;
-            }
-        }
+            }//end else. 
+        }    
+            
     }
     
 }
@@ -181,10 +123,9 @@ function getcsp(){
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
     <?php echo $objLogin->displayErrors; ?>
-    <?php $act = isset($_GET['act']) ? $_GET['act'] : ''; ?>
-    <?php if($act==="invalid") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Invalid Username or Password.</p>"; ?>
-    <?php if($act==="inactive") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Account is not activated.</p>"; ?>
-    <?php if($act==="tokenmissmatch") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Security token missmatch..</p>"; ?>
+    <?php if($_GET['act']=="invalid") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Invalid Username or Password.</p>"; ?>
+    <?php if($_GET['act']=="inactive") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Account is not activated.</p>"; ?>
+    <?php if($_GET['act']=="tokenmissmatch") echo "<p class='text-red'><i class='fa fa-exclamation-triangle'></i> Security token missmatch..</p>"; ?>
     <form name="myform" method="post" autocomplete="off">
       <input type="hidden" name="loginAdmin" value="true" />
       <input type="hidden" name="token" value="<?php echo getcsp()?>" />

